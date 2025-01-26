@@ -21,16 +21,18 @@
                         </thead>
 
                         <tbody>
-                            <tr class="border-b">
-                                <td class="p-4 text-center">Projeto A</td>
-                                <td class="p-4 text-center">01/01/2025</td>
-                                <td class="p-4 text-center">Em andamento</td>
-                                <td class="p-4 text-center">
-                                    <a href="#"
-                                        class="text-blue-500 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 flex justify-center"><x-carbon-view
-                                            class="w-4 h-4" /></a>
-                                </td>
-                            </tr>
+                            @foreach ($allProjects as $project)
+                                <tr class="border-b">
+                                    <td class="p-4 text-center">{{ $project->name }}</td>
+                                    <td class="p-4 text-center">{{ $project->start_date }}</td>
+                                    <td class="p-4 text-center">{{ $project->status }}</td>
+                                    <td class="p-4 text-center">
+                                        <a href="#"
+                                            class="text-blue-500 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 flex justify-center"><x-carbon-view
+                                                class="w-4 h-4" /></a>
+                                    </td>
+                                </tr>
+                            @endforeach  
                         </tbody>
                     </table>
 

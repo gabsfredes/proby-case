@@ -3,15 +3,32 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Models\Project;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class ProjectsController extends Controller
 {
+    private $objUser;
+    private $objProject;
+
+    public function __construct()
+    {
+        $this->objUser = new User();
+        $this->objProject = new Project();
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('welcome');
+        if (Auth::check()) {
+            $allProjects = $this->objProject->all()->sortBy('start_date');
+            return view('dashboard', compact('allProjects'));
+        } else {
+            return view('welcome');
+        }
     }
 
     /**
@@ -61,4 +78,6 @@ class ProjectsController extends Controller
     {
         //
     }
+
+  
 }
