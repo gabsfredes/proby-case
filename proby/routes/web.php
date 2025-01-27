@@ -6,7 +6,7 @@ use App\Http\Controllers\ProjectsController;
 
 Route::get('/', [ProjectsController::class, 'index']);
 
-Route::get('/dashboard', [ProjectsController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/projetos', [ProjectsController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -6,23 +6,22 @@ window.Alpine = Alpine;
 
 Alpine.start();
 
-// DARK MODE TOGGLE BUTTON
-var themeToggleDarkIcon = document.getElementById("theme-toggle-dark-icon");
-var themeToggleLightIcon = document.getElementById("theme-toggle-light-icon");
-
-if (
-    localStorage.getItem("color-theme") === "dark" ||
-    (!("color-theme" in localStorage) &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches)
-) {
-    themeToggleLightIcon.classList.remove("hidden");
+// Verifique o tema armazenado no localStorage ao carregar a página
+if (localStorage.getItem("color-theme") === "dark" || 
+    (!localStorage.getItem("color-theme") && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+    document.documentElement.classList.add("dark");
+    document.getElementById("theme-toggle-light-icon").classList.remove("hidden");
 } else {
-    themeToggleDarkIcon.classList.remove("hidden");
+    document.documentElement.classList.remove("dark");
+    document.getElementById("theme-toggle-dark-icon").classList.remove("hidden");
 }
 
 var themeToggleBtn = document.getElementById("theme-toggle");
 
 themeToggleBtn.addEventListener("click", function () {
+    var themeToggleDarkIcon = document.getElementById("theme-toggle-dark-icon");
+    var themeToggleLightIcon = document.getElementById("theme-toggle-light-icon");
+
     themeToggleDarkIcon.classList.toggle("hidden");
     themeToggleLightIcon.classList.toggle("hidden");
 
