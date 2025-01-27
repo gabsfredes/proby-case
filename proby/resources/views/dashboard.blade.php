@@ -27,7 +27,7 @@
                                     <td class="p-4 text-center">{{ $project->start_date }}</td>
                                     <td class="p-4 text-center">{{ $project->status }}</td>
                                     <td class="p-4 text-center">
-                                        <a href="#"
+                                        <a href="{{url('project/'.$project->id)}}"
                                             class="text-blue-500 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 flex justify-center"><x-carbon-view
                                                 class="w-4 h-4" /></a>
                                     </td>
