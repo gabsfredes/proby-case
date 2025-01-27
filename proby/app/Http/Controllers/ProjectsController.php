@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\ProjectRequest;
 use App\Models\Models\Project;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -42,7 +42,7 @@ class ProjectsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ProjectRequest $request)
     {  
         $newProj=$this->objProject->create([
             'name' => $request->name,
@@ -53,7 +53,9 @@ class ProjectsController extends Controller
         ]);
 
         if ($newProj) {
-            return redirect()->route('dashboard');
+            return redirect()->route('dashboard')->with('success', 'Projeto criado com sucesso!');
+        } else {
+            return redirect()->back()->with('error', 'Falha ao inserir o projeto, tente novamente.');
         }
     }
 
@@ -77,7 +79,7 @@ class ProjectsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(ProjectRequest $request, string $id)
     {
         //
     }
