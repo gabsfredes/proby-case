@@ -6,7 +6,11 @@ use App\Http\Controllers\ProjectsController;
 
 Route::get('/', [ProjectsController::class, 'index']);
 
-Route::get('/projetos', [ProjectsController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/projects', [ProjectsController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/projects/create', [ProjectsController::class, 'create'])->name('projects.create');
+Route::post('/projects', [ProjectsController::class, 'store'])->name('projects.store');
+Route::get('/projects/{id}', [ProjectsController::class, 'show'])->name('projects.show');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -14,6 +18,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/project/{id}', [ProjectsController::class, 'show'])->name('projects.show');
+
 require __DIR__.'/auth.php';
-Route::get('/create', [ProjectsController::class, 'create'])->name('projects.create');
+
+

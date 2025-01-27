@@ -44,7 +44,17 @@ class ProjectsController extends Controller
      */
     public function store(Request $request)
     {  
-        //
+        $newProj=$this->objProject->create([
+            'name' => $request->name,
+            'start_date' => $request->start_date,
+            'status' => $request->status,
+            'description' => $request->description,
+            'created_by' => Auth::id()
+        ]);
+
+        if ($newProj) {
+            return redirect()->route('dashboard');
+        }
     }
 
     /**
