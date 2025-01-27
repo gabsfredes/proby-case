@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(50%) sepia(100%) saturate(500%) hue-rotate(180deg);
+    cursor: pointer;
+}
+
+/* Estilização do ícone de data para Firefox */
+input[type="date"]::-moz-calendar-picker-indicator {
+    filter: invert(50%) sepia(100%) saturate(500%) hue-rotate(180deg);
+    cursor: pointer;
+}
+
+/* Estilização do ícone de data para Edge */
+input[type="date"]::-ms-clear {
+    display: none;
+}
