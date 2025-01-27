@@ -11,7 +11,7 @@
                     <div class="bg-gray-200 dark:bg-gray-700 rounded-lg flex items-center justify-between">
                         <div class="text-base sm:text-lg ml-3">{{ __('Nome: ') }}<span
                                 class="font-bold">{{ $project->name }}</span></div>
-                        <button type="button"
+                        <button type="button" onclick="window.location.href='{{ url('projects/'.$project->id.'/edit') }}'"
                             class="text-base sm:text-lg text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-lg px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                             Editar projeto
                         </button>

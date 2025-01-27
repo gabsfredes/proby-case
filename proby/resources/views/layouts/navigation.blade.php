@@ -15,6 +15,10 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Projetos') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('projects.create')" :active="request()->routeIs('projects.create')">
+                        {{ __('
+                        Inserir Projeto') }}
+                    </x-nav-link>
                 </div>
             </div>
 
