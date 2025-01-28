@@ -101,7 +101,9 @@ class ProjectsController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $delProject=$this->objProject->destroy($id);
+
+        return($delProject) ? "sim":"nao";
     }
 
   

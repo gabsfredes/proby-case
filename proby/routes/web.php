@@ -12,6 +12,7 @@ Route::post('/projects', [ProjectsController::class, 'store'])->name('projects.s
 Route::get('/projects/{id}', [ProjectsController::class, 'show'])->name('projects.show');
 Route::get('/projects/{id}/edit', [ProjectsController::class, 'edit'])->name('projects.edit');
 Route::patch('/projects/{id}', [ProjectsController::class, 'update'])->name('projects.update');
+Route::delete('/projects/{id}', [ProjectsController::class, 'destroy'])->name('projects.destroy');
 
 
 Route::middleware('auth')->group(function () {
