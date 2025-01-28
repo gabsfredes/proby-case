@@ -22,7 +22,7 @@
                                     <th class="p-4 text-center">Nome</th>
                                     <th class="p-4 text-center">Início</th>
                                     <th class="p-4 text-center">Status</th>
-                                    <th class="p-4 text-center">Visualizar</th>
+                                    <th class="p-4 text-center">Ver</th>
                                 </tr>
                             </thead>
 

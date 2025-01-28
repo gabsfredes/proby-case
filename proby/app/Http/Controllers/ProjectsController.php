@@ -25,7 +25,7 @@ class ProjectsController extends Controller
     public function index(Request $request)
     {
         if (Auth::check()) {
-            $allProjects = $this->objProject->paginate(5);
+            $allProjects = $this->objProject->orderBy('id', 'desc')->paginate(5);
             if ($request->page > $allProjects->lastPage()) {
                 return redirect()->route('dashboard', ['page' => 1]);
             }
