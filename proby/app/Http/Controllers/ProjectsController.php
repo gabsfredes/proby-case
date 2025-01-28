@@ -24,7 +24,7 @@ class ProjectsController extends Controller
     public function index()
     {
         if (Auth::check()) {
-            $allProjects = $this->objProject->all()->sortBy('start_date');
+            $allProjects = $this->objProject->paginate(5);
             return view('dashboard', compact('allProjects'));
         } else {
             return view('welcome');
