@@ -82,7 +82,18 @@ class ProjectsController extends Controller
      */
     public function update(ProjectRequest $request, string $id)
     {
-        //
+        $upProject=$this->objProject->where(['id'=>$id])->update([
+            'name' => $request->name,
+            'start_date' => $request->start_date,
+            'status' => $request->status,
+            'description' => $request->description,
+        ]);
+
+        if ($upProject) {
+            return redirect()->route('dashboard')->with('success', 'Projeto atualizado com sucesso!');
+        } else {
+            return redirect()->back()->with('error', 'Falha ao atualizar o projeto, tente novamente.');
+        }
     }
 
     /**

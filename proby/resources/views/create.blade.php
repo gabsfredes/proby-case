@@ -37,7 +37,7 @@
 
                     @if (isset($project))
                         <form action="{{ route('projects.update', $project->id) }}" method="POST">
-                            @method('PUT')
+                            @method('PATCH')
                         @else
                             <form name="newProject" id="newProject" method="POST"
                                 action="{{ route('projects.store') }}">
