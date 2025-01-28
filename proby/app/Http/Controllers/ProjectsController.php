@@ -73,7 +73,8 @@ class ProjectsController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $project=$this->objProject->find($id);
+        return view('create', compact('project'));
     }
 
     /**
