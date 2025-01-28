@@ -18,6 +18,7 @@
                         <table class="w-full border-collapse text-sm sm:text-lg rounded-lg overflow-hidden">
                             <thead>
                                 <tr class="bg-gray-200 dark:bg-gray-700 ">
+                                    <th class="p-4 text-center">ID</th>
                                     <th class="p-4 text-center">Nome</th>
                                     <th class="p-4 text-center">Início</th>
                                     <th class="p-4 text-center">Status</th>
@@ -28,6 +29,7 @@
                             <tbody>
                                 @foreach ($allProjects as $project)
                                     <tr class="border-b">
+                                        <td class="p-4 text-center">{{ $project->id }}</td>
                                         <td class="p-4 text-center">{{ $project->name }}</td>
                                         <td class="p-4 text-center">{{ $project->start_date }}</td>
                                         <td class="p-4 text-center">{{ $project->status }}</td>
