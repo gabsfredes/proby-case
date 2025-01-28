@@ -33,5 +33,6 @@
                 {{ $slot }}
             </main>
         </div>
+        <script srt="{{ url("assets/js/javascript.js") }}"></script>
     </body>
 </html>
