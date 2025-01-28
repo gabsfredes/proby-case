@@ -6,6 +6,7 @@ use App\Http\Requests\ProjectRequest;
 use App\Models\Models\Project;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class ProjectsController extends Controller
 {
@@ -21,10 +22,13 @@ class ProjectsController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         if (Auth::check()) {
             $allProjects = $this->objProject->paginate(5);
+            if ($request->page > $allProjects->lastPage()) {
+                return redirect()->route('dashboard', ['page' => 1]);
+            }
             return view('dashboard', compact('allProjects'));
         } else {
             return view('welcome');
