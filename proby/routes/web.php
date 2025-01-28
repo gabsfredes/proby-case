@@ -10,6 +10,8 @@ Route::get('/projects', [ProjectsController::class, 'index'])->middleware(['auth
 Route::get('/projects/create', [ProjectsController::class, 'create'])->name('projects.create');
 Route::post('/projects', [ProjectsController::class, 'store'])->name('projects.store');
 Route::get('/projects/{id}', [ProjectsController::class, 'show'])->name('projects.show');
+Route::get('/projects/{id}/edit', [ProjectsController::class, 'edit'])->name('projects.edit');
+Route::patch('/projects/{id}', [ProjectsController::class, 'update'])->name('projects.update');
 
 
 Route::middleware('auth')->group(function () {
