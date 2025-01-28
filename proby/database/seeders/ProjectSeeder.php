@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Models\Project;
+use App\Models\Project;
 
 class ProjectSeeder extends Seeder
 {
