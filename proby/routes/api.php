@@ -12,4 +12,5 @@ Route::post('/', [LoginController::class, 'login']);
 // Rotas restritas
 Route::group(['middleware' => ['auth:sanctum']], function(){
     Route::get('/projects', [ProjectsController::class, 'index']);
+    Route::post('/logout/{user}', [LoginController::class, 'logout']);
 });
