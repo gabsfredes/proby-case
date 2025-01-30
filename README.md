@@ -27,5 +27,7 @@ A estilização do projeto foi feita com Tailwind CSS e SweetAlerts.
 ## Como rodar o projeto
 As instruções de como rodar o projeto se encontram na release disposta aqui na plataforma GitHub. Você pode acessar a Release 1.0 [clicando aqui.](https://github.com/gabsfredes/proby-case/releases/tag/v1.0)
 
+Caso queira utilizar o projeto e realizar o CRUD via API, pode ser feito a leitura da Release 1.1 através [deste link.](https://github.com/gabsfredes/proby-case/releases/tag/v1.1)
+
 ### Comentários do Autor
 As minhas escolhas para este projeto foram baseadas em familiaridade, vendo que eu já possuía conhecimento com banco de dados MySql, com o framework Tailwind e com a linguagem PHP. Meu maior desafio foi aprender a utilizar o framework Laravel, pois até o momento deste desafio não havia me aprofundado nele, mas como a sua estrutura é similar à outros, como React por exemplo, não senti uma dificuldade grande de aprendizado.
