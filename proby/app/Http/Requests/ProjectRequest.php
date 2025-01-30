@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class ProjectRequest extends FormRequest
 {
@@ -27,6 +29,19 @@ class ProjectRequest extends FormRequest
             'start_date' => 'required|date',
         ];
     }
+    
+    protected function failedValidation(Validator $validator)
+    {
+        if (request()->is('api/*') || request()->wantsJson()) {
+            throw new HttpResponseException(response()->json([
+                'status' => false,
+                'errors' => $validator->errors(),
+            ], 422));
+        }
+
+        parent::failedValidation($validator);
+    }
+
 
     /**
      * Get the error messages for the defined validation rules.

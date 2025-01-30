@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProjectRequest;
 use App\Models\Project;
-use Illuminate\Http\Request;
+use Exception;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 
 class ProjectsController extends Controller
@@ -38,19 +41,31 @@ class ProjectsController extends Controller
         }
     }
 
-    public function store(Request $request) {
+    public function store(ProjectRequest $request) {
+        DB::beginTransaction();
+        try {
+            Project::create([
+                'name' => $request->name,
+                'start_date' => $request->start_date,
+                'status' => $request->status,
+                'description' => $request->description,
+                'created_by' => Auth::id()
+            ]);
 
-        $project = new Project();
-        $project->name = $request->name;
-        $project->description = $request->description;
-        $project->start_date = $request->start_date;
-        $project->status = $request->status;
-        $project->save();
+            DB::commit();
 
-        return response()->json([
-            'status' => true, 
-            'message' => 'Projeto criado com sucesso',
-            'data' => $project
-        ], 201);
+            return response()->json([
+                'status' => true, 
+                'message' => 'Projeto cadastrado com sucesso'
+            ], 201);
+
+        } catch (Exception $e){
+            DB::rollBack();
+
+            return response()->json([
+                'status' => false, 
+                'message' => 'Ocorreu um erro ao cadastrar projeto'
+            ], 400);
+        }
     }
 }
