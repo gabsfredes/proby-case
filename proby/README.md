@@ -1,66 +1,33 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Desafio para desenvolvedor ProbY
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Este projeto foi desenvolvido através de um desafio para uma vaga de desenvolvedor. O cenário do projeto era: Uma empresa precisa de uma aplicação simples para gerenciar os projetos internos. O sistema deve permitir cadastro, listagem, edição e exclusão de projetos, além de autenticação para diferentes usuários.
 
-## About Laravel
+## Funcionalidades implementadas
+### Gerenciamento
+É possível realizar a inclusão, edição, exclusão de projetos no sistema, além de visualizar os projetos existentes. Na tela inicial, os projetos possuem uma listagem paginada, sendo 5 (cinco) projetos por página.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### Validações
+Os campos obrigatórios são validados tanto no front quanto no backend. Caso haja uma mensagem de erro, ela é exibida de forma amigável ao usuário. Exemplo de mensagem de erro:
+![Captura de tela 2025-01-28 172437](https://github.com/user-attachments/assets/4001da9d-81b2-43b9-9ffb-9c21b495148f)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Tema
+É possível alternar entre um tema claro e tema escuro pelo menu da aplicação.
+![dark](https://github.com/user-attachments/assets/c445c0e6-534c-4953-b3a2-c231eaea3aa9)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Autenticação
+Somente usuários que tiverem feito login podem utilizar o sistema. Caso não haja uma conta logada, o usuário verá somente a tela de visitante. A autenticação pode ser feita criando uma conta. Foi utilizado _Laravel Breeze_ para esta funcionalidade.
 
-## Learning Laravel
+## Informações técnicas do projeto
+Foi utilizado o framework Laravel. Para o banco, optei pelo MySql, e para o controle de versionamento de código  Git/GitHub. O padrão MVC foi aplicado ao longo do desenvolvimento de todo projeto.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Foi utilizado _migrations_ para gerar a tabela que guarda as informações dos projetos, e para popular esta e a tabela de usuários (que vem com o Laravel Breeze), foram criados **seeders** e **factories**, fazendo o preenchimento do banco de dados com informações fictícias.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+A estilização do projeto foi feita com Tailwind CSS e SweetAlerts.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Como rodar o projeto
+As instruções de como rodar o projeto se encontram na release disposta aqui na plataforma GitHub. Você pode acessar a Release 1.0 [clicando aqui.](https://github.com/gabsfredes/proby-case/releases/tag/v1.0)
 
-## Laravel Sponsors
+Caso queira utilizar o projeto e realizar o CRUD via API, pode ser feito a leitura da Release 1.1 através [deste link.](https://github.com/gabsfredes/proby-case/releases/tag/v1.1)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### Comentários do Autor
+As minhas escolhas para este projeto foram baseadas em familiaridade, vendo que eu já possuía conhecimento com banco de dados MySql, com o framework Tailwind e com a linguagem PHP. Meu maior desafio foi aprender a utilizar o framework Laravel, pois até o momento deste desafio não havia me aprofundado nele, mas como a sua estrutura é similar à outros, como React por exemplo, não senti uma dificuldade grande de aprendizado.
