@@ -8,6 +8,7 @@ use App\Models\Project;
 use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\JsonResponse;
 
 
 class ProjectsController extends Controller
@@ -23,7 +24,7 @@ class ProjectsController extends Controller
         ], 200);
     }
 
-    public function show(Project $id) {
+    public function show(Project $id): JsonResponse {
 
         $project=Project::find($id);
 
@@ -41,7 +42,7 @@ class ProjectsController extends Controller
         }
     }
 
-    public function store(ProjectRequest $request) {
+    public function store(ProjectRequest $request): JsonResponse {
         DB::beginTransaction();
         try {
             Project::create([
@@ -65,6 +66,51 @@ class ProjectsController extends Controller
             return response()->json([
                 'status' => false, 
                 'message' => 'Ocorreu um erro ao cadastrar projeto'
+            ], 400);
+        }
+    }
+
+    public function update(ProjectRequest $request, Project $id): JsonResponse {
+        DB::beginTransaction();
+        try {
+                $id->update([
+                    'name' => $request->name,
+                    'start_date' => $request->start_date,
+                    'status' => $request->status,
+                    'description' => $request->description
+                ]);
+
+                DB::commit();
+ 
+                return response()->json([
+                    'status' => true, 
+                    'message' => 'Projeto atualizado com sucesso'
+                ], 200);
+
+        } catch (Exception $e){
+            DB::rollBack();
+
+            return response()->json([
+                'status' => false, 
+                'message' => 'Ocorreu um erro ao atualizar projeto'
+            ], 400);
+        }
+    }
+
+    public function destroy(Project $id): JsonResponse {
+        try {
+            $id->delete();
+
+            return response()->json([
+                'status' => true, 
+                'message' => 'Projeto deletado com sucesso'
+            ], 200);
+
+        } catch (Exception $e){
+
+            return response()->json([
+                'status' => false, 
+                'message' => 'Ocorreu um erro ao deletar projeto'
             ], 400);
         }
     }
