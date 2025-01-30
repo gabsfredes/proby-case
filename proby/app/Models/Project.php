@@ -11,4 +11,7 @@ class Project extends Model
 
     protected $table = 'projects';
     protected $fillable = ['name', 'start_date', 'status', 'description', 'created_by'];
+
+    // quando for consultado por api, nao mostrar created_by
+    protected $hidden = ['created_by'];
 }
