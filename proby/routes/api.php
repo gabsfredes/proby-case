@@ -1,8 +1,14 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\LoginController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
+// Rotas públicas
+Route::post('/', [LoginController::class, 'login']);
+
+
+// Rotas restritas
+Route::group(['middleware' => ['auth:sanctum']], function(){
+    
+});
